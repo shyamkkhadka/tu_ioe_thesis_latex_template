@@ -1,0 +1,44 @@
+\chapter{Time Schedule}\label{ch:timeschedule}
+\newcounter{loopcntr}
+\newcommand{\rpt}[2][1]{%
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{#2}%
+}
+\newcommand{\on}[1][1]{
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{&\cellcolor{gray}}
+}
+\newcommand{\off}[1][1]{
+  \forloop{loopcntr}{0}{\value{loopcntr}<#1}{&}
+}
+
+
+% A table with rows containing a pbox of 0.17 textwidth, followed by 12 pboxes
+% of 0.01 textwidth. Although this sums to just 0.37 textwidth, there are a
+% lot of intercolumn gaps to consider. The 0.17 and 0.01 were fiddled by hand
+% to fit this particular example.
+
+\noindent\begin{tabular}{p{0.25\textwidth}*{12}{|p{0.04\textwidth}}|}
+% The top line
+\textbf{Tasks} & \multicolumn{12}{c|}{\textbf{Weeks}} 
+        
+           \\
+% The second line, with its five years of four quarters
+\rpt[1]{& 2 & 4 & 6 & 8 & 10 & 12 & 14 & 16 & 18 & 20 & 22 & 24 }  \\
+\hline
+% using the on macro to fill in twenty cells as `on'
+Research   \on[4] \off[8] \\
+\hline
+Familiarization of tools       \off[3]   \on[2] \off[7]\\
+\hline
+Designing  \off[4]  \on[2] \off[6] \\
+\hline
+% using the on macro followed by the off macro
+Coding  \off[5]  \on[5] \off[2]\\
+\hline
+
+% using the on macro followed by the off macro
+Testing \&\ Debugging  \off[7]  \on[4] \off[1] \\ 
+\hline
+Documentation \on[12] \\
+
+\hline
+\end{tabular}

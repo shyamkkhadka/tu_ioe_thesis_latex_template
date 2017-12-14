@@ -1,0 +1,49 @@
+\chapter{Expected Output}\label{ch:expectedoutput}
+Here, an example of readings of 6 wireless sensor nodes(columns) and their respective reading for every 1 hour (6 rows for 6 hours) is represented in Table \ref{original_data}. 
+\\
+Say that sensor nodes 5 and 6 are down due to power cut OFF for first 3 hours. Then again nodes 1 and 2 are down for another 3 hours. It results in missing values as shown in Table \ref{incomplete_data}. Here missing values are represented by $0$. This incomplete dataset is then fed into Deep Autoencoder for imputation purpose. The Deep Autoencoder will impute the missing values as shown in Table \ref{expected_output}.
+\begin{table} [htbp]
+\caption{Input original data (sensor readings)}
+\begin{tabular}{|r|l|l|r|r|r|l|}
+\hline
+\multicolumn{1}{|l|}{0.455} & 0.365 & 0.095 &  0.514 &  0.2245 & 0.101 \\ \hline
+0.35 & 0.265 & 0.09 & 0.2255 & 0.0995 & 0.0485 \\ \hline
+0.53 & 0.42 & 0.135 & 0.677 & 0.2565 & 0.1415  \\ \hline
+0.6	 & 0.475 & 	0.205 & 	1.176 & 	0.5255 & 	0.2875\\ \hline
+0.625  & 0.485 & 0.15 & 1.0945 & 0.531 & 0.261 \\ \hline
+0.71 & 0.555 & 0.195 & 1.9485 & 0.9455 & 0.3765 \\ \hline
+
+\end{tabular}
+\label{original_data}
+\end{table}
+
+\begin{table} [htbp]
+\caption{Missing data because sensor number 5 and 6 is down for first 3 hours, sensor number 1 and 2 is down for another 3 hours.  This incomplete data fed to Deep AutoEncoder for imputation purpose.}
+\begin{tabular}{|r|l|l|r|r|r|l|}
+\hline
+\multicolumn{1}{|l|}{0.455} & 0.365 & 0.095 &  0.514 &  0 & 0 \\ \hline
+0.35 & 0.265 & 0.09 & 0.2255 & 0 & 0  \\ \hline
+0.53 & 0.42 & 0.135 & 0.677 & 0 & 0  \\ \hline
+0 & 0 & 	0.205 & 	1.176 & 	0.5255 & 	0.2875 \\ \hline
+0  & 0 & 0.15 & 1.0945 & 0.531 & 0.261 \\ \hline
+0 & 0 & 0.195 & 1.9485 & 0.9455 & 0.3765\\ \hline
+
+\end{tabular}
+\label{incomplete_data}
+\end{table}
+
+\begin{table} [htbp]
+\caption{Final Expected Output imputed by Deep Autoencoder}
+\begin{tabular}{|r|l|l|r|r|r|l|}
+\hline
+\multicolumn{1}{|l|}{0.455} & 0.365 & 0.095 &  0.514 &  0.214 & 0.091 \\ \hline
+0.35 & 0.265 & 0.09 & 0.2255 & 0.0987 & 0.0479 \\ \hline
+0.53 & 0.42 & 0.135 & 0.677 & 0.2476 & 0.1412  \\ \hline
+0.58	 & 0.455 & 	0.205 & 	1.176 & 	0.5255 & 	0.2875\\ \hline
+0.595  & 0.479 & 0.15 & 1.0945 & 0.531 & 0.261 \\ \hline
+0.69 & 0.485 & 0.195 & 1.9485 & 0.9455 & 0.3765 \\ 
+\hline
+
+\end{tabular}
+\label{expected_output}
+\end{table}
